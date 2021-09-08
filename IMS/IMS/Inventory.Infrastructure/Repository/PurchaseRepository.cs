@@ -26,11 +26,11 @@ namespace Inventory.Infrastructure.Repository
             return retrnee;
         }
 
-        public async Task<List<PurchaseEntity>> AddAsync(PurchaseEntity purchase)
+        public async Task<PurchaseEntity> AddAsync(PurchaseEntity purchase)
         {
             var member = await _purchaseContext.Purchases.AddAsync(purchase.MapToModel());
             _purchaseContext.SaveChanges();
-            List<PurchaseEntity> retrnee = new List<PurchaseEntity>();
+            PurchaseEntity retrnee = new PurchaseEntity();
             return retrnee;
         }
 

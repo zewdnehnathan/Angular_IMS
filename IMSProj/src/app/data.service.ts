@@ -1,53 +1,45 @@
-import { Injectable } from '@angular/core';
+import {APIDto} from './Interfaces/apiDto';
 import {HttpClient} from  '@angular/common/http';
-
-import { Observable} from 'rxjs';
-
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Purchase } from './Interfaces/purchase';
-import {APIDto} from './Interfaces/apiDto'
+import { environment } from 'src/environments/environment';
+import {map} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private apiUrl = "https://localhost:44302/api";
+  private apiUrl = environment.APIPath;
 
   constructor(private http: HttpClient) {
 
    }
 
-getUsers(): Observable<Purchase[]>{
+getPurchases(): Observable<Purchase[]>{
      return this.http.get<Purchase[]>(this.apiUrl+ '/Purchase');
-     /*.pipe(
-       map(purchases=>purchases.map(purchases=>({
-         ...purchases,
-         invoiceNo: purchases.invoiceNo,
-         otherRefNo: purchases.otherRefNo,
-         refDate:purchases.refDate,
-         purchaseDts: purchases.purchaseDts
-         // isAdmin: user.id === 10? true:false //trying add custome column not working for me
-       })))
-     );*/
+
    }
 
-  getUser(): Observable<Purchase>{ 
+  getPurchase(): Observable<Purchase>{
     return this.http.get<Purchase>(this.apiUrl +'/Purchase/1');
   }
 
-  createUser(purchase: Purchase): Observable<Purchase>{
+  createPurchase(purchase: Purchase): Observable<Purchase>{
+    console.log(purchase);
     return this.http.post<Purchase>(this.apiUrl+'/Purchase',purchase);
   }
 
-  updateUser(purchase: Purchase): Observable<Purchase>{
+  updatePurchase(purchase: Purchase): Observable<Purchase>{
     return this.http.put<Purchase>(`${this.apiUrl}/Purchase/${purchase.id}`,purchase);
   }
 
-  patchUser(purchase: Purchase): Observable<Purchase>{
+  patchPurchase(purchase: Purchase): Observable<Purchase>{
     return this.http.patch<Purchase>(`${this.apiUrl}/Purchase/${purchase.id}`,purchase);
   }
 
-  deleteUser(id: number): Observable<void>{
+  deletePurchase(id: number): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/Purchase/${id}`);
   }
 

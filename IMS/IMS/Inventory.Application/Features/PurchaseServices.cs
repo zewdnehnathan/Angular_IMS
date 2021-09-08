@@ -20,7 +20,7 @@ namespace Inventory.Application.Features
             _purchaseRepository = purchaseRepository;
         }
 
-        public async Task<List<Purchase>> Add(Purchase purchase)
+        public async Task<PurchaseEntity> Add(PurchaseEntity purchase)
         {
             return await _purchaseRepository.AddAsync(purchase);
         }
@@ -61,11 +61,6 @@ namespace Inventory.Application.Features
                     (await _purchaseRepository.GetWithPredicateAsync(predicate, pageIndex ?? 0, pageSize ?? 2)).ToList()
                   
                 );
-        }
-
-        public Task<PurchaseEntity> Add(PurchaseEntity purchase)
-        {
-            throw new System.NotImplementedException();
         }
 
         Task<List<PurchaseEntity>> IPurchaseService.GetWithPredicate(int? id, string searchKey, int? pageIndex, int? pageSize)

@@ -29,7 +29,7 @@ export class AppComponent implements OnInit,OnDestroy{
   }
 
    onGetUsers(): void{
-    this.dataservice.getUsers().subscribe(
+    this.dataservice.getPurchases().subscribe(
       (response) => console.log(response),
       (error) => console.log(error),
       () => console.log('Done getting users')

@@ -21,57 +21,57 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Invoice Number *" value="" />
+                                <input type="text" class="form-control" [(ngModel)]="invoiceNumber" placeholder="Invoice Number *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Supplier *" value="" />
+                                <input type="text" class="form-control" [(ngModel)]="supplier" placeholder="Supplier *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Other Reference Number *" value="" />
+                                <input type="text" class="form-control" [(ngModel)]="otherRefNo" placeholder="Other Reference Number *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control"  placeholder="Reference Date *" value="" />
+                                <input type="text" class="form-control" [(ngModel)]="refDate" placeholder="Reference Date *" value="" />
                             </div>
                            <!-- <div class="form-group">
                                 <div class="maxl">
-                                    <label class="radio inline"> 
+                                    <label class="radio inline">
                                         <input type="radio" name="gender" value="male" checked>
-                                        <span> Male </span> 
+                                        <span> Male </span>
                                     </label>
-                                    <label class="radio inline"> 
+                                    <label class="radio inline">
                                         <input type="radio" name="gender" value="female">
-                                        <span>Female </span> 
+                                        <span>Female </span>
                                     </label>
                                 </div>
                             </div>-->
                         </div>
                         <div class="col-md-6">
-                           
+
                                 <div class="form-group">
                                     <select class="form-control">
-                                        <option class="hidden"  selected disabled>Please select store</option>
+                                        <option class="hidden"  [(ngModel)] = "store" selected disabled>Please select store</option>
                                         <option>Gergi Store</option>
                                         <option>Piassa Store</option>
                                         <option>Bole Store</option>
                                     </select>
                                 </div>
-                        
+
                             <div class="form-group">
                                 <select class="form-control">
-                                    <option class="hidden"  selected disabled>Please select Item</option>
+                                    <option class="hidden"  [(ngModel)] = "item" selected disabled>Please select Item</option>
                                     <option>Item One</option>
                                     <option>Item Two</option>
                                     <option>Item Three</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Quatity *" value="" />
+                                <input type="text" class="form-control" [(ngModel)] ="qty" placeholder="Quatity *" value="" />
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Unit Price *" value="" />
+                                <input type="text" class="form-control" [(ngModel)] = "unitPrice" placeholder="Unit Price *" value="" />
                             </div>
-                            <input type="submit" class="btnRegister"  value="Save"/>
+                            <input type="submit" class="btnRegister" (click)="onSaveItem()"  value="Save"/>
                         </div>
                     </div>
                 </div>
@@ -120,12 +120,12 @@
         </div>
     </div>
 
-</div>				                            
+</div>
 
 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        DataTable 
+                        DataTable
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple">
@@ -135,7 +135,7 @@
                                     <th>Supplier    </th>
                                     <th>Other Reference    </th>
                                     <th>Date    </th>
-                                    
+
                                 </tr>
                             </thead>
                             <tfoot>
@@ -144,7 +144,7 @@
                                     <td>{{pur.supplier}} </td>
                                     <td>{{pur.otherRefNo}} </td>
                                     <td>{{pur.refDate}} </td>
-                                   
+
                                 </tr>-->
                             </tfoot>
                             <tbody>
@@ -153,9 +153,7 @@
                                     <td>{{pur.supplier}}   </td>
                                     <td>{{pur.otherRefNo}}   </td>
                                     <td>{{pur.refDate}}   </td>
-                                  
                                 </tr>
-                                
                             </tbody>
                         </table>
                     </div>

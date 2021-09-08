@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit {
   }
 }
   onGetUsers(): void{
-    this.dataservice.getUsers().subscribe(
+    this.dataservice.getPurchases().subscribe(
       (response) =>  this.usersForTable = response,
       (error) => console.log(error),
       () => this.fillItBae()

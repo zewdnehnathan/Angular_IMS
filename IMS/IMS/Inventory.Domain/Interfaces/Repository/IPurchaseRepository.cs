@@ -11,7 +11,7 @@ namespace Inventory.Domain.Interfaces.Repository
     {
         Task<List<Purchase>> GetByUser(string user);
         Task<List<Purchase>> AddAsync(Purchase purchase);
-        Task<List<PurchaseEntity>> AddAsync(PurchaseEntity purchase);
+        Task<PurchaseEntity> AddAsync(PurchaseEntity purchase);
         bool Update(PurchaseEntity purchase);
         bool Delete(int Id);
 
