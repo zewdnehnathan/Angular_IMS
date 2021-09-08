@@ -4,6 +4,7 @@ import { APIDto } from '../Interfaces/apiDto';
 import { DataService } from '../data.service';
 import { Purchase } from '../Interfaces/purchase';
 import { PurchaseDt } from '../Interfaces/purchaseDt';
+import { Subscriber } from 'rxjs';
 import { toArray } from 'rxjs/operators';
 
 @Component({
@@ -13,6 +14,7 @@ import { toArray } from 'rxjs/operators';
 })
 export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
 
+  private sub: any;
   holdIt: string = "";
   //To Be Done Today
   dtoforPurchase: APIDto | undefined;
@@ -53,7 +55,7 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
     this.dtoforPurchase = { Data : [], Message: "", IsSuccess : false}
    }
   ngOnDestroy(): void {
-
+    this.sub.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -61,7 +63,7 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
   }
 
   onGetPurchases(): void{
-    this.dataservice.getPurchases().subscribe(response=> this.usersForTable=response);
+    this.sub = this.dataservice.getPurchases().subscribe(response=> this.usersForTable=response);
   }
 
   fillItBae():void{
