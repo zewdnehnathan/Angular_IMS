@@ -41,27 +41,9 @@ deletePurchase(id: number): Observable<void>{
  return this.http.delete<void>(`${this.apiUrl}/Purchase/${id}`);
 }
 
-/*private transformToICurrentWeather(data:APIDto): Purchase {
 
-
-
-  return {
-
-
-
-
-    modifiedBy: "",
-    modifiedDate: "",
-    modifiedWorkStation: "",
-    id: 0,
-    refDate: "",
-    supplier: "",
-    invoiceNo: "",
-    otherRefNo: "",
-    purchaseDts:
-
-  }
-}*/
-
+getItem(): Observable<APIDto>{
+  return this.http.get<APIDto>(this.apiUrl+ '/Item');
+}
 
 }

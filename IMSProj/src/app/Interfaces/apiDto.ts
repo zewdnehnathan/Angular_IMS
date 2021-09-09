@@ -2,7 +2,7 @@ import { Purchase } from "./purchase";
 
 export interface APIDto{
 
-      data : Purchase[];
+      data : any[];
       isSuccess : boolean;
       message : string;
 }

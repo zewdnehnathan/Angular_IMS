@@ -6,6 +6,7 @@ import { APIDto } from '../Interfaces/apiDto';
 import { Purchase } from '../Interfaces/purchase';
 import { PurchaseDt } from '../Interfaces/purchaseDt';
 import { ServiceDtodataService } from '../services/service-dtodata.service';
+import { items } from '../Interfaces/items';
 
 @Component({
   selector: 'app-purchase-dtcomponent',
@@ -14,14 +15,12 @@ import { ServiceDtodataService } from '../services/service-dtodata.service';
 })
 export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
 
-  res!: APIDto | null;
    subscription: Subscription = new Subscription;
 
-  holdIt: string = "";
   //To Be Done Today
   dtoforPurchase: APIDto | undefined;
-
-  usersForTable: Purchase[]=[];
+  itemsForCombo: items[]=[];
+  purchasesForTable: Purchase[]=[];
   invoiceNumber : string ="Inv-00001";
   supplier: string ="Excellerent";
   otherRefNo : string= "OT-0001";
@@ -62,19 +61,30 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.onGetPurchases();
+    this.onGetItems();
 
+  }
+
+  onGetItems():void{
+    this.subscription = this.dataservice.getItem().subscribe(
+      response => this.fillItemsNow(response.data)
+    );
   }
 
   onGetPurchases(): void{
     this.subscription = this.dataservice.getPurchases().subscribe(
       response=>this.fillItBae(response.data)
-
        );
+  }
+
+  fillItemsNow(data:any):void{
+    console.log(data);
+    this.itemsForCombo = data;
   }
 
   fillItBae(data:any):void{
     console.log(data);
-    this.usersForTable = data;
+    this.purchasesForTable = data;
 
   }
 

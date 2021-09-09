@@ -57,11 +57,11 @@
                                 </div>
 
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option class="hidden"  [(ngModel)] = "item" selected disabled>Please select Item</option>
-                                    <option>Item One</option>
-                                    <option>Item Two</option>
-                                    <option>Item Three</option>
+                                <select class="form-control"  [(ngModel)] = "item">
+                                    <option *ngFor="let pur of itemsForCombo" [value]="pur.id" >
+                                      {{pur.name}}
+                                    </option>
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -148,7 +148,7 @@
                                 </tr>-->
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let pur of usersForTable; let index=index;">
+                                <tr *ngFor="let pur of purchasesForTable; let index=index;">
                                     <td>{{pur.invoiceNo}}    </td>
                                     <td>{{pur.supplier}}   </td>
                                     <td>{{pur.otherRefNo}}   </td>
