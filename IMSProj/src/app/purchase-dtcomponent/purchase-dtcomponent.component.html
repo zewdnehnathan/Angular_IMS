@@ -128,13 +128,13 @@
                         DataTable
                     </div>
                     <div class="card-body">
-                        <table id="datatablesSimple">
+                        <table id="datatablesSimple" class="table table-dark">
                             <thead>
                                 <tr>
-                                    <th>Invoice    </th>
-                                    <th>Supplier    </th>
-                                    <th>Other Reference    </th>
-                                    <th>Date    </th>
+                                    <th style="color: blue;">Invoice    </th>
+                                    <th style="color:blue;">Supplier    </th>
+                                    <th style="color: blue;">Other Reference    </th>
+                                    <th style="color: blue;">Date    </th>
 
                                 </tr>
                             </thead>
@@ -148,13 +148,14 @@
                                 </tr>-->
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let pur of purchasesForTable; let index=index;">
-                                    <td>{{pur.invoiceNo}}    </td>
-                                    <td>{{pur.supplier}}   </td>
-                                    <td>{{pur.otherRefNo}}   </td>
-                                    <td>{{pur.refDate}}   </td>
+                                <tr style="color: white;" *ngFor="let pur of purchasesForTable; let index=index;">
+                                    <td>        {{pur.invoiceNo   }}      </td>
+                                    <td>        {{pur.supplier   }}       </td>
+                                    <td>        {{pur.otherRefNo  }}     </td>
+                                    <td>        {{pur.refDate}}        </td>
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>

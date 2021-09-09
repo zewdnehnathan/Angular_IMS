@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Purchase } from '../Interfaces/purchase';
 import { environment } from 'src/environments/environment';
+import { user } from '../Interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,12 @@ deletePurchase(id: number): Observable<void>{
  return this.http.delete<void>(`${this.apiUrl}/Purchase/${id}`);
 }
 
-
 getItem(): Observable<APIDto>{
   return this.http.get<APIDto>(this.apiUrl+ '/Item');
 }
+createToken(_user: user): Observable<string>{
+  console.log(_user);
+  return this.http.post<string>(this.apiUrl+'/Users',_user);
+ }
 
 }
