@@ -1,11 +1,11 @@
 import { APP_ID, Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscriber, Subscription, pipe } from 'rxjs';
+import { map, toArray } from 'rxjs/operators';
 
 import { APIDto } from '../Interfaces/apiDto';
-import { DataService } from '../data.service';
 import { Purchase } from '../Interfaces/purchase';
 import { PurchaseDt } from '../Interfaces/purchaseDt';
-import { Subscriber } from 'rxjs';
-import { toArray } from 'rxjs/operators';
+import { ServiceDtodataService } from '../services/service-dtodata.service';
 
 @Component({
   selector: 'app-purchase-dtcomponent',
@@ -14,7 +14,9 @@ import { toArray } from 'rxjs/operators';
 })
 export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
 
-  private sub: any;
+  res!: APIDto | null;
+   subscription: Subscription = new Subscription;
+
   holdIt: string = "";
   //To Be Done Today
   dtoforPurchase: APIDto | undefined;
@@ -31,7 +33,7 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
   newPurchase:Purchase;
   newPurchaseDt:PurchaseDt[];
 
-  constructor(private dataservice:DataService) {
+  constructor(private dataservice:ServiceDtodataService/*DataService*/) {
     this.newPurchaseDt = [{
       createdBy: "stringFromAng",
       createdDate: "2021-09-07T13:27:54.858Z",
@@ -52,22 +54,28 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
      purchaseDts: this.newPurchaseDt
     }
 
-    this.dtoforPurchase = { Data : [], Message: "", IsSuccess : false}
+    this.dtoforPurchase = { data : [], message: "", isSuccess : false}
    }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
     this.onGetPurchases();
+
   }
 
   onGetPurchases(): void{
-    this.sub = this.dataservice.getPurchases().subscribe(response=> this.usersForTable=response);
+    this.subscription = this.dataservice.getPurchases().subscribe(
+      response=>this.fillItBae(response.data)
+
+       );
   }
 
-  fillItBae():void{
-       console.log(" from fill it bae " +this.usersForTable.length);
+  fillItBae(data:any):void{
+    console.log(data);
+    this.usersForTable = data;
+
   }
 
   onSaveItem():void{

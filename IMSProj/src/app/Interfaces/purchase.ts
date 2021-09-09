@@ -3,7 +3,7 @@ import { PurchaseDt } from "./purchaseDt";
 
 export interface Purchase{
 
-  
+
   modifiedBy: string
   modifiedDate: string
   modifiedWorkStation: string

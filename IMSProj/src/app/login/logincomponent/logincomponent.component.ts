@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
+
 import { Subscription } from 'rxjs';
-import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-logincomponent',

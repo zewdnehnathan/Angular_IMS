@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DataService } from './data.service';
+
 import { Purchase } from './Interfaces/purchase';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,11 @@ export class AppComponent implements OnInit,OnDestroy{
 
 
   purchase!: Purchase;
-  
+
   globalIsLoggedUser:string="false";
 
-  constructor(private dataservice: DataService) { 
-    
+  constructor() {
+
   }
 
   isLoggedIn():void{
@@ -25,16 +25,9 @@ export class AppComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit() {
-    //this.onGetUsers();
   }
 
-   onGetUsers(): void{
-    this.dataservice.getPurchases().subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error),
-      () => console.log('Done getting users')
-    );
-  }
+
   ngOnDestroy() {
   }
 

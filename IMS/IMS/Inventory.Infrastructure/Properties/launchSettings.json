@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Inventory.Infrastructure": {
-      "commandName": "Project",
-      "workingDirectory": "C:\\Users\\user\\Documents\\Core Projects\\IMS\\IMS\\Inventory.Infrastructure"
-    }
-  }
-}
