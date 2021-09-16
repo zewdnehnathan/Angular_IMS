@@ -1,8 +1,9 @@
-import { APP_ID, Component, OnDestroy, OnInit } from '@angular/core';
+import { APP_ID, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscriber, Subscription, pipe } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
 
 import { APIDto } from '../Interfaces/apiDto';
+import { FormControl } from '@angular/forms';
 import { Purchase } from '../Interfaces/purchase';
 import { PurchaseDt } from '../Interfaces/purchaseDt';
 import { ServiceDtodataService } from '../services/service-dtodata.service';
@@ -21,39 +22,19 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
   dtoforPurchase: APIDto | undefined;
   itemsForCombo: items[]=[];
   purchasesForTable: Purchase[]=[];
-  invoiceNumber : string ="Inv-00001";
-  supplier: string ="Excellerent";
-  otherRefNo : string= "OT-0001";
-  refDate : string= "06/09/2021";
-  store: string = "Gergi";
-  item: string = "Raw Material 1";
-  qty:number = 5;
-  unitPrice:number = 500;
-  newPurchase:Purchase;
-  newPurchaseDt:PurchaseDt[];
+  invoiceNumber : string ="";
+  supplier: string ="";
+  otherRefNo : string= "";
+  refDate : string= "2021-09-07T13:27:54.858";
+  store: string = "Gerji Store";
+  item: string = "";
+  qty:number = 0;
+  unitPrice:number = 0;
+  newPurchase!: Purchase;
+  newPurchaseDt!: PurchaseDt[];
 
   constructor(private dataservice:ServiceDtodataService/*DataService*/) {
-    this.newPurchaseDt = [{
-      createdBy: "stringFromAng",
-      createdDate: "2021-09-07T13:27:54.858Z",
-      createdWorkstation: "stringFromAng",
-      modifiedBy: "stringFromAng",
-      modifiedDate: "2021-09-07T13:27:54.858Z",
-      modifiedWorkstation: "stringFromAng",
-      id: 0,
-      purchaseid: 0,
-      storeCode: "stringFromAng",
-      itemCode: "stringFromAng",
-      qty: 0,
-      unitPrice: 0,
-      totalPrice: 0 }]
 
-    this.newPurchase = { invoiceNo : this.invoiceNumber, supplier:this.supplier,otherRefNo:this.otherRefNo,refDate:this.refDate,
-     modifiedBy: "",modifiedDate:"",modifiedWorkStation: "",id:0,
-     purchaseDts: this.newPurchaseDt
-    }
-
-    this.dtoforPurchase = { data : [], message: "", isSuccess : false}
    }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -68,6 +49,7 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
   onGetItems():void{
     this.subscription = this.dataservice.getItem().subscribe(
       response => this.fillItemsNow(response.data)
+
     );
   }
 
@@ -77,12 +59,12 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
        );
   }
 
-  fillItemsNow(data:any):void{
+  fillItemsNow(data:items[]):void{
     console.log(data);
     this.itemsForCombo = data;
   }
 
-  fillItBae(data:any):void{
+  fillItBae(data:Purchase[]):void{
     console.log(data);
     this.purchasesForTable = data;
 
@@ -91,12 +73,12 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
   onSaveItem():void{
 
     this.newPurchaseDt = [{
-      createdBy: "xxx",
-      createdDate: "2021-09-07T13:27:54.858Z",
-      createdWorkstation: "xxx",
-      modifiedBy: "xxx",
-      modifiedDate: "2021-09-07T13:27:54.858Z",
-      modifiedWorkstation: "xxx",
+      createdBy:"",
+      createdDate: "2021-09-07T13:27:54.858",
+      createdWorkstation: "",
+      modifiedBy: "",
+      modifiedDate: "2021-09-07T13:27:54.858",
+      modifiedWorkstation: "",
       id: 0,
       purchaseid: 0,
       storeCode: this.store,
@@ -105,8 +87,8 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
       unitPrice: this.unitPrice,
       totalPrice: this.qty*this.unitPrice }]
 
-    this.newPurchase = { id:0,invoiceNo : this.invoiceNumber, supplier:this.supplier,otherRefNo:this.otherRefNo,refDate:"2021-09-07T13:27:54.858Z",
-      modifiedBy: "xxx",modifiedDate:"2021-09-07T13:27:54.858Z",modifiedWorkStation: "xxx",
+    this.newPurchase = { id:0,invoiceNo : this.invoiceNumber, supplier:this.supplier,otherRefNo:this.otherRefNo,
+      refDate:this.refDate,modifiedBy: "",modifiedDate: "2021-09-07T13:27:54.858",modifiedWorkStation: "",
       purchaseDts:this.newPurchaseDt
 
     }
@@ -117,6 +99,9 @@ export class PurchaseDtcomponentComponent implements OnInit,OnDestroy {
       (error) => console.log(error)
 
     );
+
+
+
   }
 
 }

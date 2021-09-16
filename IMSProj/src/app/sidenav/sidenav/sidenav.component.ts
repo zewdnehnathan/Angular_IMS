@@ -21,9 +21,7 @@ export class SidenavComponent implements OnInit {
 
   onMenuSelected(selectedVal:string):void{
   this.isSelected=selectedVal;
-  if(selectedVal === "Purchase"){
 
-  }
 }
 
 

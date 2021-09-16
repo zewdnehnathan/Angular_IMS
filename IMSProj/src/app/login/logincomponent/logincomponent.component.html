@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedUser === 'false'">
 <div class="container">
-    <section id="content">  
+    <section id="content">
       <form action="">
         <h1>Login Form</h1>
         <div>
@@ -10,7 +10,7 @@
           <input type="password" placeholder="Password" required="" id="password" />
         </div>
         <div>
-          <input type="submit" value="Log in" (click)="isLoggedIn()"  routerLink="/home" />
+          <input type="submit" value="Log in" (click)="isLoggedIn()" />
           <a href="#">Lost your password?</a>
           <a href="#">Register</a>
         </div>

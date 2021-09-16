@@ -7,7 +7,6 @@ import { JwtService } from './JwtService';
 import { LogincomponentComponent } from './login/logincomponent/logincomponent.component';
 import { NgModule } from '@angular/core';
 import { PurchaseDtcomponentComponent } from './purchase-dtcomponent/purchase-dtcomponent.component';
-import { PurchasecomponentComponent } from './purchase/purchasecomponent/purchasecomponent.component';
 import { RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav/sidenav.component';
 
@@ -15,7 +14,6 @@ import { SidenavComponent } from './sidenav/sidenav/sidenav.component';
   declarations: [
     AppComponent,
     LogincomponentComponent,
-    PurchasecomponentComponent,
     SidenavComponent,
     PurchaseDtcomponentComponent,
   ],

@@ -7,21 +7,14 @@
             <input type="submit" name="" value="Finish"/><br/>
         </div>
         <div class="col-md-9 register-right">
-            <!--<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-                </li>
-            </ul>-->
+
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Create a Purchase</h3>
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]="invoiceNumber" placeholder="Invoice Number *" value="" />
+                                <input type="text" class="form-control"  [(ngModel)]="invoiceNumber" placeholder="Invoice Number *" value="" />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" [(ngModel)]="supplier" placeholder="Supplier *" value="" />
@@ -32,24 +25,13 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" [(ngModel)]="refDate" placeholder="Reference Date *" value="" />
                             </div>
-                           <!-- <div class="form-group">
-                                <div class="maxl">
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="male" checked>
-                                        <span> Male </span>
-                                    </label>
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="female">
-                                        <span>Female </span>
-                                    </label>
-                                </div>
-                            </div>-->
+
                         </div>
                         <div class="col-md-6">
 
                                 <div class="form-group">
                                     <select class="form-control">
-                                        <option class="hidden"  [(ngModel)] = "store" selected disabled>Please select store</option>
+                                        <option class="hidden"  [(ngModel)] = "store" selected enabled>Please select store</option>
                                         <option>Gergi Store</option>
                                         <option>Piassa Store</option>
                                         <option>Bole Store</option>
@@ -65,18 +47,18 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)] ="qty" placeholder="Quatity *" value="" />
+                                <input type="number" class="form-control" [(ngModel)] ="qty" placeholder="Quatity *"  />
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)] = "unitPrice" placeholder="Unit Price *" value="" />
+                                <input type="number" class="form-control" [(ngModel)] = "unitPrice" placeholder="Unit Price *"  />
                             </div>
                             <input type="submit" class="btnRegister" (click)="onSaveItem()"  value="Save"/>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h3  class="register-heading">Apply as a Hirer</h3>
+                    <h3  class="register-heading"></h3>
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -103,7 +85,7 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control">
-                                    <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                    <option class="hidden"  selected disabled>Please select your Security Question</option>
                                     <option>What is your Birthdate?</option>
                                     <option>What is Your old Phone Number</option>
                                     <option>What is your Pet Name?</option>
@@ -139,13 +121,7 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                                <!--<tr *ngFor="let pur of usersForTable; let index=index;">
-                                    <td>{{pur.invoiceNo}} </td>
-                                    <td>{{pur.supplier}} </td>
-                                    <td>{{pur.otherRefNo}} </td>
-                                    <td>{{pur.refDate}} </td>
 
-                                </tr>-->
                             </tfoot>
                             <tbody>
                                 <tr style="color: white;" *ngFor="let pur of purchasesForTable; let index=index;">
