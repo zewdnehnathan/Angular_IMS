@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,10 +10,7 @@ import { PurchaseDtcomponentComponent } from './purchase-dtcomponent/purchase-dt
 import { SidenavComponent } from './sidenav/sidenav/sidenav.component';
 
 const routes: Routes = [
-  {
-    path:'',
-    loadChildren: () => import('./app.module').then(m => m.AppModule)
-  },
+
   {
     path:'home',
     component:SidenavComponent
@@ -34,10 +32,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule,
-    CommonModule,
-    FormsModule
-
   ],
   exports: [RouterModule]
 })
